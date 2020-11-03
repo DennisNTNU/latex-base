@@ -1,0 +1,80 @@
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, width=170mm, top=20mm, bottom=20mm]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb} % for \mathbb{R}: Real number set
+\usepackage{listings}
+%\usepackage{mathtools}
+
+%\usepackage{tikz} % for drawing figures
+%\usetikzlibrary{math} %needed tikz library
+
+\usepackage{caption} % for ?
+\usepackage{subcaption} % for begin{subfigure}
+
+\usepackage{xcolor} % for colored text
+
+\definecolor{dkgreen}{rgb}{0, 0.6, 0}
+\definecolor{drkgray}{rgb}{0.3, 0.3, 0.3}
+\definecolor{lgtgray}{rgb}{0.98, 0.98, 0.98}
+\definecolor{mauve}{rgb}{0.58, 0, 0.82}
+
+%\hypersetup{
+%    colorlinks=true,
+%    urlcolor=blue }
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex}
+
+
+\lstdefinestyle{plain}
+{
+    frame=single, %single, l, r, t, b, double
+	language=Matlab,
+	aboveskip=12mm,
+	belowskip=2mm,
+	lineskip=1mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\footnotesize\ttfamily\color{black}},
+	numbers=left,
+	numberstyle=\color{drkgray}\scriptsize\ttfamily,
+	keywordstyle=\color{drkgray},
+	commentstyle=\color{drkgray},
+	backgroundcolor=\color{lgtgray},
+	stringstyle=\color{drkgray},
+	rulecolor=\color{drkgray},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=2
+}
+
+\lstdefinestyle{matlb}
+{
+    frame=single, %single, l, r, t, b, double
+	language=Matlab,
+	aboveskip=12mm,
+	belowskip=2mm,
+	lineskip=1mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\footnotesize\ttfamily},
+	numbers=left,
+	numberstyle=\tiny\color{drkgray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	backgroundcolor=\color{lgtgray},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=2
+}
+
+\lstset{style=matlb}
+
+
+\title{Thoughts and ... Bayes?}
+\author{Diamond Hoe}
+\date{October 2023}
