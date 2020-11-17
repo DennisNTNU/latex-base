@@ -6,10 +6,10 @@ $(OUTPUTFOLDER)/main.pdf: $(FILENAME)
 	mkdir -p $(OUTPUTFOLDER)
 	pdflatex $(FILENAME) -output-directory=$(OUTPUTFOLDER)
 	pdflatex $(FILENAME) -output-directory=$(OUTPUTFOLDER)
-	mv *.aux build
-	mv *.out build
-	mv *.pdf build
-	mv *.log build
+	mv *.aux $(OUTPUTFOLDER)
+	mv *.out $(OUTPUTFOLDER)
+	mv *.pdf $(OUTPUTFOLDER)
+	mv *.log $(OUTPUTFOLDER)
 
 .PHONY: clean
 clean:
