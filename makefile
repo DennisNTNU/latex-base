@@ -13,4 +13,5 @@ $(OUTPUTFOLDER)/main.pdf: $(FILENAME)
 
 .PHONY: clean
 clean:
-	rm $(OUTPUTFOLDER) -rf
+	rm -f *.aux *.out *.pdf *.log
+	rm -rf $(OUTPUTFOLDER)
