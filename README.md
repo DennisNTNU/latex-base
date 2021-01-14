@@ -12,3 +12,7 @@ These should do the trick
 For .eps figures
 
 `$ sudo apt install texlive-font-utils`
+
+For library management (referencing and reference list)
+
+`$ sudo apt-get install texlive-bibtex-extra biber`
