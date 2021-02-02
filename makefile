@@ -6,18 +6,10 @@ OUTPUTFOLDER = build
 
 $(OUTPUTFOLDER)/main.pdf: $(FILENAME)
 	mkdir -p $(OUTPUTFOLDER)
-	pdflatex $(FILENAME) -output-directory=$(OUTPUTFOLDER)
-	biber $(FILENAME_BASE)
-	pdflatex $(FILENAME) -output-directory=$(OUTPUTFOLDER)
-	pdflatex $(FILENAME) -output-directory=$(OUTPUTFOLDER)
-	mv *.aux $(OUTPUTFOLDER)
-	mv *.out $(OUTPUTFOLDER)
-	mv *.pdf $(OUTPUTFOLDER)
-	mv *.log $(OUTPUTFOLDER)
-	mv *.bbl $(OUTPUTFOLDER)
-	mv *.bcf $(OUTPUTFOLDER)
-	mv *.blg $(OUTPUTFOLDER)
-	mv *.xml $(OUTPUTFOLDER)
+	pdflatex -output-directory=$(OUTPUTFOLDER) $(FILENAME)
+	biber --input-directory $(OUTPUTFOLDER) --output-directory $(OUTPUTFOLDER) $(FILENAME_BASE)
+	pdflatex -output-directory=$(OUTPUTFOLDER) $(FILENAME)
+	pdflatex -output-directory=$(OUTPUTFOLDER) $(FILENAME)
 
 .PHONY: clean
 clean:
