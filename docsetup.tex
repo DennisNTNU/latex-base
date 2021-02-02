@@ -2,6 +2,14 @@
 \usepackage[a4paper, width=170mm, top=20mm, bottom=20mm]{geometry}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\hypersetup{
+    colorlinks=true, % colors will appear in printed version
+    linkcolor=cyan, % document internal link color
+    filecolor=magenta,
+    urlcolor=blue,
+    citecolor=red, % color for citation links
+    pdftitle={latex example},
+}
 \usepackage{amsmath}
 \usepackage{amssymb} % for \mathbb{R}: Real number set
 \usepackage{listings}
@@ -16,6 +24,9 @@
 \usepackage{xcolor} % for colored text
 
 \usepackage{biblatex} % for bibliography management
+
+% algorithm environment
+\usepackage{algorithm,algpseudocode}% http://ctan.org/pkg/{algorithms,algorithmicx}
 
 \definecolor{dkgreen}{rgb}{0, 0.6, 0}
 \definecolor{drkgray}{rgb}{0.3, 0.3, 0.3}

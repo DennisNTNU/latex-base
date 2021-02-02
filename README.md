@@ -15,4 +15,14 @@ For .eps figures
 
 For library management (referencing and reference list)
 
-`$ sudo apt-get install texlive-bibtex-extra biber`
+`$ sudo apt install texlive-bibtex-extra biber`
+
+For algorithm environment and other things
+
+`$ sudo apt install texlive-science`
+
+---
+
+If you want to install everything (requires >5BG of storage):
+
+`$ sudo apt install texlive-full`

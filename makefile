@@ -4,7 +4,7 @@ FILENAME = main.tex
 FILENAME_BASE = $(basename $(FILENAME))
 OUTPUTFOLDER = build
 
-$(OUTPUTFOLDER)/main.pdf: $(FILENAME)
+$(OUTPUTFOLDER)/main.pdf: $(FILENAME) docsetup.tex
 	mkdir -p $(OUTPUTFOLDER)
 	pdflatex -output-directory=$(OUTPUTFOLDER) $(FILENAME)
 	biber --input-directory $(OUTPUTFOLDER) --output-directory $(OUTPUTFOLDER) $(FILENAME_BASE)

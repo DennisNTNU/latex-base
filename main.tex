@@ -7,6 +7,10 @@
 
 \begin{document}
 
+Example Table of Contents
+
+\tableofcontents
+
 \section{Example section}
 \subsection{Example subsection}
 \subsubsection{Example subsubsection}
@@ -20,6 +24,10 @@ Example equation 2
 \begin{equation}
     D(l,w,h,t) = h \left\lfloor \frac{w+l}{2l} \right\rfloor - 2l + \left\lceil \frac{e^{t-1}}{t^2+1} \right\rceil
 \end{equation}
+
+Example \href{https://www.ntnu.edu}{hyperlink}.
+
+Example Linking to \hyperlink{anyplace}{any place in document}.
 
 Example Citation \cite{example1988}.
 
@@ -78,5 +86,63 @@ Example Bibliography:
     \caption{Example subfigure}
     \label{fig:subfig}
 \end{figure}
+
+Example Algorithm
+\begin{algorithm}[ht]
+    \caption{Thrust allocation Algorithm}\label{alg:thralloc}
+    \begin{algorithmic}[1]
+        \Statex
+        % \Require $\boldsymbol{\tau}_c[k]$ \Comment{Desired forces form the PID}
+        % \Require $\mathbf f [k-1]$ \Comment{Previous thruster force vector}
+        % \Require $\boldsymbol \alpha [k-1]$ \Comment{Previous thruster angle vector}
+        \Procedure{THRUST\_ALLOCATION}{$\boldsymbol{\tau}_c, \mathbf f [k-1], \boldsymbol \alpha [k-1]$}
+        \Repeat
+            \State $\boldsymbol{\tau} \gets \boldsymbol{\tau}_c[k]$
+%            \State Compute desired allocation
+            \State $\mathbf f_e[k] \gets \mathbf W^{-1} \mathbf T_e^\top (\mathbf T_e \mathbf W^{-1} \mathbf T_e^\top)^{-1} \boldsymbol \tau$
+%            \State {Convert $\mathbf f_e[k]$ to $\mathbf f[k]$ and $\boldsymbol \alpha [k]$}
+            \For {i in \{1, ... , \#Thusters\}}
+            \If {Thruster i is extended} \label{alg:unextending}
+            \State $f_i[k] \gets \sqrt{(f_{ei}^x[k])^2 + (f_{ei}^y[k])^2}$ \label{alg:pseudoinv}
+            \State $ \alpha_i[k] = \mathrm{atan2}(f_{ei}^y[k], f_{ei}^x[k])$
+            \Else
+            \State $f_i[k] \gets f_{ei}[k]$
+            \State $ \alpha_i[k] = \alpha^c_i$
+            \EndIf
+            \EndFor
+%            \State Check for constraint violations, and constrain those that violate
+            \For {i in \{1, ... , \#Thusters\}} \label{alg:limiting}
+            \If {$|f_i[k] - f_i[k-1]| > \Delta f_i^{lim}$}
+            \State $f_i[k] \gets f_i[k-1] + \Delta f_i^{lim} \times \mathrm{sign}(f_i[k] - f_i[k-1])$
+            \EndIf
+            \If {$|f_i[k]| > f_i^{lim}$}
+            \State $f_i[k] \gets$ $f_i^{lim} \times \mathrm{sign}(f_i[k])$
+            \EndIf
+            \If {$|\alpha_i[k] - \alpha_i[k-1]| > \Delta \alpha_i^{lim}$}
+            \State $\alpha_i[k] \gets \alpha_i[k-1] + \Delta \alpha_i^{lim} \times \mathrm{sign}(\alpha_i[k] - \alpha_i[k-1])$
+            \EndIf
+            \EndFor
+%            \State Check for constraint violations, and constrain those that violate
+            \For {$i$ that were limited} \label{alg:nextIterPrep}
+            \If {$f_i$ was limited}
+            \State $\boldsymbol{\tau} \gets \boldsymbol{\tau} - t_i(\alpha_i[k])f_i[k]$
+            \State Remove the two columns in $\mathbf T_e$ corresponding to thruster $i$
+            \State Remove the two rows and columns in $\mathbf W$ corresponding to thruster $i$
+            \State Remove the two elements $f_{ei}^x$ and $f_{ei}^y$ in $\mathbf f_e$
+            \Else \Comment{$\alpha_i$ was limited}
+            \State Replace the two columns in $\mathbf T_e$ corresponding to thruster $i$ with $t_i(\alpha_i[k])$
+            \State Replace the two rows and columns in $\mathbf W$ corresponding to thruster $i$ with
+            \Statex \quad \quad \quad \quad \quad \quad \quad \quad a row and column with the average extended weight
+            \State Replace the two elements $f_{ei}^x$ and $f_{ei}^y$ in $\mathbf f_e$, with $f_i$
+            \EndIf
+            \EndFor
+        \Until {Either no thrusters violate the limits  or $\mathbf T_e$ is empty}
+        \EndProcedure
+        \Statex
+    \end{algorithmic}
+\end{algorithm}
+
+
+This is \hypertarget{anyplace}{any place in the document}.
 
 \end{document}
