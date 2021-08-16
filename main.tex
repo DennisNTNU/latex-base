@@ -72,6 +72,25 @@ Example Bibliography:
     \caption{Example table}
 \end{table}
 
+\begin{table}[ht]
+    \centering
+    \caption{Example table with multi-column cells}
+    \begin{tabular}{|l|l|l|}
+        \hline
+         & \multicolumn{2}{l|}{Multi-column} \\ \hline
+         & \textsf{1936x} & \textsf{1864x} \\
+         & \textsf{1216}  & \textsf{1194}  \\ \hline
+        \multirow{2}{*}{Multirow 1} & X1 & X2 \\
+        & Y1 & Y2 \\ \hline
+        SISD Bin3 Subs4  & 20    & 20    \\
+        \hline                                                                 
+        \hline
+
+        Test 1 \multirow{2}{*}{Multirow 2} & A1 & A2 \\
+        Test 2 & B1 & B2 \\ \hline
+    \end{tabular}
+\end{table}
+
 \begin{figure}[htb]
     \centering
     \includegraphics[width=.35\linewidth]{example-image.png}
